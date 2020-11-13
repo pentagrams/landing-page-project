@@ -9,13 +9,68 @@
 	<link
 		href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Raleway:wght@700&family=Roboto:wght@400;500;700;900&display=swap"
 		rel="stylesheet">
-
+	<link rel="stylesheet" href="./sass/main.css">
 </head>
 
 <body>
 
+
+ <!-- =========HEADER======== -->
+
+ <header class="header">
+	<div class="conteiner">
+	  <nav class="navigation">
+		<a class="logo link" lang="en" href="./index.html" >		
+			Hell
+			<svg class="logo-svg" width="" height="" >
+				<use href="./images/svg/sprite.svg#fire"></use>
+			</svg>		
+			EN
+			<span class="under-logo"> <span class="under-logo-orange">Адский</span>  английский</span>
+		</a>
+		
+		<button 
+		  type="button" 
+		  class="menu-button" aria-expanded="false" 
+		  aria-expanded="false"
+		  aria-controls="menu-conteiner"
+		  data-menu-button >
+			<svg width="21" height="15" aria-label="Переключатель мобильного меню">
+			  <use class="icon-cross" href="./images/svg/sprite.svg#menu" ></use>
+			  <use class="icon-menu" href="./images/svg/sprite.svg#close" ></use>
+			</svg>
+		</button>
+		<div class="menu-conteiner" id="menu-conteiner"  data-menu>
+		  <ul class="navigation-list list">
+			<li class="navigation-list-item">
+			  <a class="navigation-list-link link" href="">Программа обучения</a>
+			</li>
+			<li class="navigation-list-item">
+			  <a class="navigation-list-link-active link" href="./index.html">О нас</a>
+			</li>
+			<li class="navigation-list-item">
+			  <a class="navigation-list-link link" href="">Варианты обучения</a>
+			</li>
+			<li class="navigation-list-item">
+			  <a class="navigation-list-link link" href="">Контакты</a>
+			</li>
+		  </ul>
+		  <a href="#tel" class="button link">Консультация по телефону</a>
+
+		  <!-- id="tel" - ПРИЦЕПИТЬ К ТЕЛЕФОНУ В ФУТЕРЕ -->
+
+		</div> 
+	  </nav>
+
+	</div>
+
+  </header>
+  <!-- =========END HEADER======== -->
+
+
 	<!-- Скрипт идёт последним в разметке. В нём уже подключен главный SASS-файл. -->
 	<script src="/index.js"></script>
+	<script src="menu.js"> </script>
 </body>
 
 </html>
