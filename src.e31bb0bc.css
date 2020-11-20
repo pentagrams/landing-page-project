@@ -2014,14 +2014,14 @@ li {
 }
 @media screen and (min-width: 768px) {
   .garantee .garantee-list::before {
-    left: 55px;
+    left: 65px;
     height: 200px;
   }
 }
 @media screen and (min-width: 1395px) {
   .garantee .garantee-list::before {
     top: 53px;
-    left: 90px;
+    left: 104px;
     height: 250px;
   }
 }

@@ -199,11 +199,22 @@ $(document).ready(function () {
     slidesToShow: 1,
     slidesToScroll: 1,
     asNavFor: '.slid-list-small',
+    arrows: true,
     mobileFirst: true,
     responsive: [{
       breakpoint: 320,
       settings: {
         arrows: false
+      }
+    }, {
+      breakpoint: 767,
+      settings: {
+        arrows: true
+      }
+    }, {
+      breakpoint: 1314,
+      settings: {
+        arrows: true
       }
     }]
   });
@@ -257,7 +268,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62393" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64094" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
