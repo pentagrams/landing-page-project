@@ -117,119 +117,18 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
-var bundleURL = null;
-
-function getBundleURLCached() {
-  if (!bundleURL) {
-    bundleURL = getBundleURL();
-  }
-
-  return bundleURL;
-}
-
-function getBundleURL() {
-  // Attempt to find the URL of the current script and use that as the base URL
-  try {
-    throw new Error();
-  } catch (err) {
-    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
-
-    if (matches) {
-      return getBaseURL(matches[0]);
-    }
-  }
-
-  return '/';
-}
-
-function getBaseURL(url) {
-  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
-}
-
-exports.getBundleURL = getBundleURLCached;
-exports.getBaseURL = getBaseURL;
-},{}],"../node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
-var bundle = require('./bundle-url');
-
-function updateLink(link) {
-  var newLink = link.cloneNode();
-
-  newLink.onload = function () {
-    link.remove();
-  };
-
-  newLink.href = link.href.split('?')[0] + '?' + Date.now();
-  link.parentNode.insertBefore(newLink, link.nextSibling);
-}
-
-var cssTimeout = null;
-
-function reloadCSS() {
-  if (cssTimeout) {
-    return;
-  }
-
-  cssTimeout = setTimeout(function () {
-    var links = document.querySelectorAll('link[rel="stylesheet"]');
-
-    for (var i = 0; i < links.length; i++) {
-      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
-        updateLink(links[i]);
-      }
-    }
-
-    cssTimeout = null;
-  }, 50);
-}
-
-module.exports = reloadCSS;
-},{"./bundle-url":"../node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"sass/main.scss":[function(require,module,exports) {
-var reloadCSS = require('_css_loader');
-
-module.hot.dispose(reloadCSS);
-module.hot.accept(reloadCSS);
-},{"E:\\code\\landing-page-project\\src\\images\\svg\\Arrow1.svg":[["Arrow1.2b743e10.svg","images/svg/Arrow1.svg"],"images/svg/Arrow1.svg"],"E:\\code\\landing-page-project\\src\\images\\svg\\Arrow2.svg":[["Arrow2.b7cb0a35.svg","images/svg/Arrow2.svg"],"images/svg/Arrow2.svg"],"./..\\images\\mobile\\vector-mob.png":[["vector-mob.8f0a9df3.png","images/mobile/vector-mob.png"],"images/mobile/vector-mob.png"],"./..\\images\\mobile\\background-front_mobile.png":[["background-front_mobile.1d2ad670.png","images/mobile/background-front_mobile.png"],"images/mobile/background-front_mobile.png"],"./..\\images\\mobile\\background-back_mobile.png":[["background-back_mobile.1d9e6fef.png","images/mobile/background-back_mobile.png"],"images/mobile/background-back_mobile.png"],"./..\\images\\mobile\\background-front_mobile@2x.png":[["background-front_mobile@2x.d14d8469.png","images/mobile/background-front_mobile@2x.png"],"images/mobile/background-front_mobile@2x.png"],"./..\\images\\mobile\\background-back_mobile@2x.png":[["background-back_mobile@2x.81dc8dae.png","images/mobile/background-back_mobile@2x.png"],"images/mobile/background-back_mobile@2x.png"],"./..\\images\\tablet\\vector-tab.png":[["vector-tab.26e03b79.png","images/tablet/vector-tab.png"],"images/tablet/vector-tab.png"],"./..\\images\\tablet\\background-front_tab.png":[["background-front_tab.c97d3834.png","images/tablet/background-front_tab.png"],"images/tablet/background-front_tab.png"],"./..\\images\\tablet\\background-back_tab.png":[["background-back_tab.385523d4.png","images/tablet/background-back_tab.png"],"images/tablet/background-back_tab.png"],"./..\\images\\tablet\\background-front_tab@2x.png":[["background-front_tab@2x.5aad4b20.png","images/tablet/background-front_tab@2x.png"],"images/tablet/background-front_tab@2x.png"],"./..\\images\\tablet\\background-back_tab@2x.png":[["background-back_tab@2x.3db43315.png","images/tablet/background-back_tab@2x.png"],"images/tablet/background-back_tab@2x.png"],"./..\\images\\desktop\\vector1.png":[["vector1.f8e2af8f.png","images/desktop/vector1.png"],"images/desktop/vector1.png"],"./..\\images\\desktop\\background-front.png":[["background-front.c0c2e12b.png","images/desktop/background-front.png"],"images/desktop/background-front.png"],"./..\\images\\desktop\\background-back.png":[["background-back.0527618d.png","images/desktop/background-back.png"],"images/desktop/background-back.png"],"./..\\images\\desktop\\background-front@2x.png":[["background-front@2x.1c5836cf.png","images/desktop/background-front@2x.png"],"images/desktop/background-front@2x.png"],"./..\\images\\desktop\\background-back@2x.png":[["background-back@2x.b4a0d649.png","images/desktop/background-back@2x.png"],"images/desktop/background-back@2x.png"],"E:\\code\\landing-page-project\\src\\images\\svg\\firegray.svg":[["firegray.d126220d.svg","images/svg/firegray.svg"],"images/svg/firegray.svg"],"E:\\code\\landing-page-project\\src\\images\\svg\\marker.svg":[["marker.d5c7fb6b.svg","images/svg/marker.svg"],"images/svg/marker.svg"],"E:\\code\\landing-page-project\\src\\images\\svg\\fire.svg":[["fire.4fc00094.svg","images/svg/fire.svg"],"images/svg/fire.svg"],"./..\\images\\mobile\\form_bg_mobile.png":[["form_bg_mobile.3a621d01.png","images/mobile/form_bg_mobile.png"],"images/mobile/form_bg_mobile.png"],"./..\\images\\mobile\\form_bg_mobile@2x.png":[["form_bg_mobile@2x.9631afb6.png","images/mobile/form_bg_mobile@2x.png"],"images/mobile/form_bg_mobile@2x.png"],"./..\\images\\tablet\\form_bg_tab.png":[["form_bg_tab.ecb5fe3f.png","images/tablet/form_bg_tab.png"],"images/tablet/form_bg_tab.png"],"./..\\images\\tablet\\form_bg_tab@2x.png":[["form_bg_tab@2x.c7da54df.png","images/tablet/form_bg_tab@2x.png"],"images/tablet/form_bg_tab@2x.png"],"./..\\images\\desktop\\form_bg.png":[["form_bg.ff9dc6fe.png","images/desktop/form_bg.png"],"images/desktop/form_bg.png"],"./..\\images\\desktop\\form_bg@2x.png":[["form_bg@2x.b4d344dc.png","images/desktop/form_bg@2x.png"],"images/desktop/form_bg@2x.png"],"./..\\images\\svg\\instagram.svg":[["instagram.b424317e.svg","images/svg/instagram.svg"],"images/svg/instagram.svg"],"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"index.js":[function(require,module,exports) {
-"use strict";
-
-require("./sass/main.scss");
-
-$(document).ready(function () {
-  $('.slid-list').slick({
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    asNavFor: '.slid-list-small',
-    mobileFirst: true,
-    responsive: [{
-      breakpoint: 320,
-      settings: {
-        arrows: false
-      }
-    }]
+})({"menu.js":[function(require,module,exports) {
+(function () {
+  var menuBtnRef = document.querySelector("[data-menu-button]");
+  var mobileMenuRef = document.querySelector("[data-menu]");
+  menuBtnRef.addEventListener("click", function () {
+    var expanded = menuBtnRef.getAttribute("aria-expanded") === "true" || false;
+    menuBtnRef.classList.toggle("is-open");
+    menuBtnRef.setAttribute("aria-expanded", !expanded);
+    mobileMenuRef.classList.toggle("is-open");
   });
-  $('.slid-list-small').slick({
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    asNavFor: '.slid-list',
-    mobileFirst: true,
-    responsive: [{
-      breakpoint: 767,
-      settings: {
-        arrows: false,
-        slidesToShow: 7,
-        slidesToScroll: 1
-      }
-    }, {
-      breakpoint: 1314,
-      settings: {
-        arrows: false,
-        slidesToShow: 7,
-        slidesToScroll: 1
-      }
-    }]
-  });
-});
-},{"./sass/main.scss":"sass/main.scss"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+})();
+},{}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -433,5 +332,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.js"], null)
-//# sourceMappingURL=/src.e31bb0bc.js.map
+},{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js","menu.js"], null)
+//# sourceMappingURL=/menu.234110a1.js.map
